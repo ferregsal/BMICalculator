@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BMICalculator</string>
-    <string name="main_activity_click_text">I clicked the button</string>
-    <string name="click">Click</string>
+    <string name="click">Clic</string>
+    <string name="main_activity_click_text">He pulsado el botón.</string>
     <string name="mensaje">Hello World! I will make the \n text longer to text the wrap \n content option with a longer text</string>
 </resources>
