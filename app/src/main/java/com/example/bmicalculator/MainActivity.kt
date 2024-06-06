@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
                 in (1f..18.4f) -> {
                     checkLevel.text="Insuficiente"
                     checkLevel.setTextColor(Color.BLUE)
+
                 }
                 in (18.5f..24.9f) -> {
                     checkLevel.text="Normal"
