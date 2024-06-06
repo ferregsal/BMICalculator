@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import kotlin.math.pow
+import android.graphics.Color
 import android.util.Log
 class MainActivity : AppCompatActivity() {
 
@@ -32,30 +33,46 @@ class MainActivity : AppCompatActivity() {
         addButton = findViewById(R.id.addButton)
         weightTextView = findViewById(R.id.weightTextView)
         resultTextView = findViewById(R.id.resultTextView)
-        Log.i("IMC","textview")
+
         resultCalculate = findViewById(R.id.resultCalculate)
-        Log.i("IMC","calculate")
+
         calculateButton = findViewById(R.id.calculateButton)
         checkLevel = findViewById(R.id.checkLevel)
         setHeight()
         setWeight()
-        setCheckLevel()
+
         minusButton.setOnClickListener{
             weight--
             setWeight()
-            Log.i("IMC","He reducido el peso")
+
         }
         addButton.setOnClickListener{
             weight++
             setWeight()
-            Log.i("IMC","He aumentado el peso")
+
         }
         calculateButton.setOnClickListener{
             height=heightEditText.text.toString().toInt()
             val result = weight / (height/100f).pow(2)
             resultCalculate.text = result.toString()
-            Log.i("IMC","He calculado el resultado")
-
+            when (result){
+                in (1f..18.4f) -> {
+                    checkLevel.text="Insuficiente"
+                    checkLevel.setTextColor(Color.BLUE)
+                }
+                in (18.5f..24.9f) -> {
+                    checkLevel.text="Normal"
+                    checkLevel.setTextColor(Color.GREEN)
+                }
+                in (25f..29f) -> {
+                    checkLevel.text="Pre-obesidad"
+                    checkLevel.setTextColor(Color.YELLOW)
+                }
+                in (30f..50f) -> {
+                    checkLevel.text="Obesidad"
+                    checkLevel.setTextColor(Color.RED)
+                }
+            }
         }
     }
     fun setHeight(){
@@ -64,8 +81,6 @@ class MainActivity : AppCompatActivity() {
     fun setWeight(){
         weightTextView.text = weight.toString()
     }
-    fun setCheckLevel(){
 
-    }
 
             }

@@ -103,7 +103,7 @@
             android:textSize="24sp"
             android:layout_gravity="center"
             android:text=""
-            android:textColor="@color/green"
+            android:textColor="@color/blue"
 
             />
 
