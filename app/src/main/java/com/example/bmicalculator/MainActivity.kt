@@ -10,6 +10,8 @@ import android.widget.TextView
 import kotlin.math.pow
 import android.graphics.Color
 import android.util.Log
+import android.widget.SeekBar
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var heightEditText: EditText
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var minusButton: Button
     lateinit var addButton: Button
     lateinit var checkLevel:TextView
+    lateinit var seekBar: SeekBar
 
     var height:Int=150
     var weight:Int=70
@@ -38,23 +41,38 @@ class MainActivity : AppCompatActivity() {
 
         calculateButton = findViewById(R.id.calculateButton)
         checkLevel = findViewById(R.id.checkLevel)
+        seekBar =findViewById(R.id.seekBar)
         setHeight()
         setWeight()
 
         minusButton.setOnClickListener{
             weight--
             setWeight()
-
         }
         addButton.setOnClickListener{
             weight++
             setWeight()
-
         }
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                weight = progress
+                weightTextView.text = progress.toString()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // No se necesita implementar nada aquí para este caso
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // No se necesita implementar nada aquí para este caso
+            }
+        })
+
         calculateButton.setOnClickListener{
             height=heightEditText.text.toString().toInt()
             val result = weight / (height/100f).pow(2)
-            resultCalculate.text = result.toString()
+            resultCalculate.text = String.format("%.2f", result)
             when (result){
                 in (1f..18.4f) -> {
                     checkLevel.text="Insuficiente"

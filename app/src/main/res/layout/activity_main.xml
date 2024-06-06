@@ -41,6 +41,8 @@
         android:paddingTop="100dp"
 
         >
+
+
         <Button
             android:id="@+id/minusButton"
             android:layout_width="50dp"
@@ -70,6 +72,17 @@
 
             />
     </LinearLayout>
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:max="200"
+        android:min="1"
+        android:progress="70"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
