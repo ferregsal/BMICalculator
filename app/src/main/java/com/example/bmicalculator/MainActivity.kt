@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         calculateButton.setOnClickListener{
             height=heightEditText.text.toString().toInt()
             val result = weight / (height/100f).pow(2)
-            resultCalculate.text = String.format("%.2f", result)
+            resultCalculate.text = result.toString()
             when (result){
                 in (1f..18.4f) -> {
                     checkLevel.text="Insuficiente"
@@ -89,6 +89,10 @@ class MainActivity : AppCompatActivity() {
                 in (30f..50f) -> {
                     checkLevel.text="Obesidad"
                     checkLevel.setTextColor(Color.RED)
+                }
+                in (50f..100f) -> {
+                    checkLevel.text="Peligro!!"
+                    checkLevel.setTextColor(Color.BLACK)
                 }
             }
         }
